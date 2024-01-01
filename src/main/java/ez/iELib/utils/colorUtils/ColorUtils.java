@@ -1,4 +1,4 @@
-package ez.iELib.utils;
+package ez.iELib.utils.colorUtils;
 
 import org.bukkit.ChatColor;
 

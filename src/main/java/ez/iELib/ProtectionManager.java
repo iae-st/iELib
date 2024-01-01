@@ -26,8 +26,8 @@ public class ProtectionManager {
     private Plugin worldGuard;
     private Logger logger;
 
-    public ProtectionManager(Plugin plugin, Logger logger) {
-        this.pluginInstance = plugin;
+    public ProtectionManager(Logger logger) {
+        this.pluginInstance = iELib.getPlugin();
         this.logger = logger;
         load();
     }

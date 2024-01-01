@@ -1,6 +1,6 @@
 package ez.iELib;
 
-import ez.iELib.utils.ColorUtils;
+import ez.iELib.utils.colorUtils.ColorUtils;
 import org.bukkit.Bukkit;
 
 public class Logger {
@@ -8,6 +8,7 @@ public class Logger {
 
     public Logger(String prefix) {
         pfx = prefix;
+        log("§asuccessfully hooked into iELib", true);
     }
 
     public void log(String message) {

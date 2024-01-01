@@ -10,9 +10,9 @@ import java.util.Optional;
 public class iELib {
 
     @Getter
-    private static Plugin plugin;
+    protected static Plugin plugin;
 
-    public iELib(Plugin plugin) {
+    public static void assignPlugin(Plugin plugin) {
         iELib.plugin = plugin;
     }
 
