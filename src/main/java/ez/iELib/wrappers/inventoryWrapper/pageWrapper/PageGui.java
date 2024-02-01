@@ -62,6 +62,7 @@ public class PageGui {
     }
 
     public Gui build() {
+
         if(pageType == PageType.GUI) {
             this.gui = PagedGui.guis()
                     .setStructure(
