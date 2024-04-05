@@ -8,15 +8,19 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.util.function.Consumer;
+
 public class TimerItem {
 
     private long seconds;
+    private long seconds_to_loop;
     private ItemStack timeItem;
     private BukkitTask task;
     private ItemStack displayItem;
 
     public TimerItem(long seconds, ItemStack displayItem) {
         this.seconds = seconds;
+        this.seconds_to_loop = seconds;
         this.displayItem = displayItem;
     }
 
@@ -27,19 +31,18 @@ public class TimerItem {
         long d = (seconds / (60 * 60 * 24));
         String timeFormat = String.format("%02d:%02d:%02d:%02d", d, h, m, s);
 
-        // Assuming you've an item factory to make a new item
-        // replace this with your own item creation logic
         timeItem = ItemBuilder.customEnchantedItemUsingStack(displayItem, "Time remaining", timeFormat);
 
         return timeItem;
     }
 
-    public void startCountdown(Plugin plugin) {
+    public void startCountdown(Plugin plugin, Consumer<?> consumer) {
         task = plugin.getServer().getScheduler().runTaskTimer(plugin, () -> {
             if (seconds > 0) {
                 seconds--;
             } else {
-                task.cancel(); // stop the task when seconds reach zero
+                consumer.accept(null);
+                seconds = seconds_to_loop;
             }
         }, 0L, 20L);
     }
