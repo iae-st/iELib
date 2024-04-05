@@ -34,11 +34,10 @@ public class TimerItem {
         return timeItem;
     }
 
-    public void startCountdown(Plugin plugin, Inventory inventory, int itemSlot) {
+    public void startCountdown(Plugin plugin) {
         task = plugin.getServer().getScheduler().runTaskTimer(plugin, () -> {
             if (seconds > 0) {
                 seconds--;
-                inventory.setItem(itemSlot, getTimeItem());
             } else {
                 task.cancel(); // stop the task when seconds reach zero
             }
