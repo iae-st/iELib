@@ -1,6 +1,7 @@
 package ez.iELib.gui;
 
 import ez.iELib.ItemBuilder;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFactory;
@@ -31,7 +32,7 @@ public class TimerItem {
         long d = (seconds / (60 * 60 * 24));
         String timeFormat = String.format("%02d:%02d:%02d:%02d", d, h, m, s);
 
-        timeItem = ItemBuilder.customEnchantedItemUsingStack(displayItem, displayItem.getItemMeta().getDisplayName(), timeFormat);
+        timeItem = ItemBuilder.customEnchantedItemUsingStack(displayItem, displayItem.getItemMeta().getDisplayName(), ChatColor.GRAY + "Time remaining: " + ChatColor.GOLD + timeFormat);
 
         return timeItem;
     }
