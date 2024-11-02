@@ -2,6 +2,7 @@ package ez.iELib.utils;
 
 import com.jeff_media.customblockdata.CustomBlockData;
 import ez.iELib.iELib;
+import org.bukkit.Chunk;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
@@ -171,5 +172,20 @@ public class PersistentDataUtils {
         if (itemStack.getItemMeta() == null) return false;
         NamespacedKey namespacedKey = new NamespacedKey(iELib.getPlugin(), key);
         return itemStack.getItemMeta().getPersistentDataContainer().has(namespacedKey);
+    }
+
+    public static void addKeyToChunk(Chunk chunk, String key, PersistentDataType type, Object value) {
+        NamespacedKey key1 = new NamespacedKey(iELib.getPlugin(), key);
+        chunk.getPersistentDataContainer().set(key1, type, value);
+    }
+
+    public static boolean HasKeyInChunk(Chunk chunk, String key) {
+        NamespacedKey key1 = new NamespacedKey(iELib.getPlugin(), key);
+        return chunk.getPersistentDataContainer().has(key1);
+    }
+
+    public static Object GetKeyInChunk(Chunk chunk, String key, PersistentDataType type) {
+        NamespacedKey key1 = new NamespacedKey(iELib.getPlugin(), key);
+        return chunk.getPersistentDataContainer().get(key1, type);
     }
 }
