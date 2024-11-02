@@ -50,7 +50,8 @@ public class TickingGui extends ChestGui {
                         ((TickingPane) pane).tick();
                     }
                 });
-                tickingAction.tick();
+                if(tickingAction != null)
+                    tickingAction.tick();
                 update();
             }
         }.runTaskTimer(plugin, delay, period);

@@ -32,7 +32,8 @@ public abstract class TickingPane extends SimpleStaticPane {
     }
 
     public void tick() {
-        this.onTick.tick();
+        if(onTick != null)
+            this.onTick.tick();
     }
 
 }
