@@ -52,7 +52,7 @@ public class TickingGui extends ChestGui {
 
     @Override
     public void show(@NotNull HumanEntity humanEntity) {
-        show(humanEntity);
+        super.show(humanEntity);
         task = new BukkitRunnable() {
             @Override
             public void run() {
