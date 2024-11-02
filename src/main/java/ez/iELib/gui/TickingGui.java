@@ -51,6 +51,7 @@ public class TickingGui extends ChestGui {
                     }
                 });
                 tickingAction.tick();
+                update();
             }
         }.runTaskTimer(plugin, delay, period);
         setOnClose(event -> task.cancel());
