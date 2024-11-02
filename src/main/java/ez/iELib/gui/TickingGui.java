@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class TickingGui extends ChestGui {
 
-    private BukkitTask task;
     private long delay;
     private long period;
     private TickingAction tickingAction;
@@ -20,40 +19,30 @@ public class TickingGui extends ChestGui {
         super(rows, title);
         this.delay = delay;
         this.period = period;
-        initialize();
     }
 
     public TickingGui(int rows, @NotNull TextHolder title, long delay, long period) {
         super(rows, title);
         this.delay = delay;
         this.period = period;
-        initialize();
     }
 
     public TickingGui(int rows, @NotNull String title, @NotNull Plugin plugin, long delay, long period) {
         super(rows, title, plugin);
         this.delay = delay;
         this.period = period;
-        initialize();
     }
 
     public TickingGui(int rows, @NotNull TextHolder title, @NotNull Plugin plugin, long delay, long period) {
         super(rows, title, plugin);
         this.delay = delay;
         this.period = period;
-        initialize();
     }
 
 
-    public void initialize(){
-        this.setOnClose(event -> task.cancel());
-    }
-
-
-    @Override
-    public void show(@NotNull HumanEntity humanEntity) {
+    public void open(@NotNull HumanEntity humanEntity) {
         super.show(humanEntity);
-        task = new BukkitRunnable() {
+        BukkitTask task = new BukkitRunnable() {
             @Override
             public void run() {
                 getPanes().forEach(pane -> {
@@ -64,6 +53,7 @@ public class TickingGui extends ChestGui {
                 tickingAction.tick();
             }
         }.runTaskTimer(plugin, delay, period);
+        setOnClose(event -> task.cancel());
     }
 
     public void setOnTick(TickingAction action) {
