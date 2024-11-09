@@ -47,4 +47,8 @@ public class TimerItem {
             }
         }, 0L, 20L);
     }
+
+    public void stopCountdown() {
+        task.cancel();
+    }
 }
