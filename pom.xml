@@ -55,9 +55,12 @@
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
         <repository>
-            <id>metamechanists-repo-releases</id>
-            <name>MetaMechanists Repository</name>
-            <url>https://repo.metamechanists.org/releases</url>
+            <id>placeholderapi</id>
+            <url>https://repo.extendedclip.com/releases/</url>
+        </repository>
+        <repository>
+            <id>lylat</id>
+            <url>https://nexus.lylat.world/repository/maven-public/</url>
         </repository>
         <repository>
             <id>spigot-repo</id>
@@ -68,16 +71,8 @@
             <url>https://hub.jeff-media.com/nexus/repository/jeff-media-public/</url>
         </repository>
         <repository>
-            <id>skullcreator-repo</id>
-            <url>https://github.com/deanveloper/SkullCreator/raw/mvn-repo/</url>
-        </repository>
-        <repository>
             <id>sk89q-repo</id>
             <url>https://maven.enginehub.org/repo/</url>
-        </repository>
-        <repository>
-            <id>citizens-repo</id>
-            <url>https://maven.citizensnpcs.co/repo</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
@@ -96,8 +91,8 @@
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
         <repository>
-            <id>xenondevs</id>
-            <url>https://repo.xenondevs.xyz/releases</url>
+            <id>neetgames</id>
+            <url>https://nexus.neetgames.com/repository/maven-releases/</url>
         </repository>
     </repositories>
 
