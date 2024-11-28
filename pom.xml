@@ -29,24 +29,12 @@
                 <configuration>
                     <relocations>
                         <relocation>
-                            <pattern>com.github.MilkBowl.VaultAPI</pattern>
-                            <shadedPattern>ez.iELib.VaultAPI</shadedPattern>
-                        </relocation>
-                        <relocation>
                             <pattern>com.jeff_media.customblockdata</pattern>
                             <shadedPattern>ez.iELib.customblockdata</shadedPattern>
                         </relocation>
                         <relocation>
-                            <pattern>com.gmail.nossr50</pattern>
-                            <shadedPattern>ez.iELib.mcMMO</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>me.clip.placeholderapi</pattern>
-                            <shadedPattern>ez.iELib.placeholderapi</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>com.github.Slimefun</pattern>
-                            <shadedPattern>ez.iELib.Slimefun</shadedPattern>
+                            <pattern>ez.iELib</pattern>
+                            <shadedPattern>ez.iELib</shadedPattern>
                         </relocation>
                     </relocations>
                     <filters>
@@ -170,12 +158,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.Slimefun</groupId>
-            <artifactId>Slimefun4</artifactId>
-            <version>RC-35</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
@@ -185,24 +167,6 @@
             <groupId>com.j256.ormlite</groupId>
             <artifactId>ormlite-jdbc</artifactId>
             <version>6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.MilkBowl</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <version>1.7</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>me.clip</groupId>
-            <artifactId>placeholderapi</artifactId>
-            <version>2.11.6</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.gmail.nossr50.mcMMO</groupId>
-            <artifactId>mcMMO</artifactId>
-            <version>2.2.004</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
