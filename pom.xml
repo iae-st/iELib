@@ -36,6 +36,22 @@
                             <pattern>ez.iELib</pattern>
                             <shadedPattern>ez.iELib</shadedPattern>
                         </relocation>
+                        <relocation>
+                            <pattern>com.gmail.nossr50</pattern>
+                            <shadedPattern>ez.iELib.mcmmo</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>me.clip.placeholderapi</pattern>
+                            <shadedPattern>ez.iELib.placeholderapi</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.github.MilkBowl.VaultAPI</pattern>
+                            <shadedPattern>ez.iELib.vaultapi</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.github.Slimefun</pattern>
+                            <shadedPattern>ez.iELib.slimefun</shadedPattern>
+                        </relocation>
                     </relocations>
                     <filters>
                         <filter>
