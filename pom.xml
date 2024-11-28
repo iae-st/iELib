@@ -27,6 +27,28 @@
                     <goal>shade</goal>
                 </goals>
                 <configuration>
+                    <relocations>
+                        <relocation>
+                            <pattern>com.github.MilkBowl.VaultAPI</pattern>
+                            <shadedPattern>ez.iELib.VaultAPI</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.jeff_media.customblockdata</pattern>
+                            <shadedPattern>ez.iELib.customblockdata</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.gmail.nossr50</pattern>
+                            <shadedPattern>ez.iELib.mcMMO</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>me.clip.placeholderapi</pattern>
+                            <shadedPattern>ez.iELib.placeholderapi</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.github.Slimefun</pattern>
+                            <shadedPattern>ez.iELib.Slimefun</shadedPattern>
+                        </relocation>
+                    </relocations>
                     <filters>
                         <filter>
                             <artifact>*:*</artifact>
