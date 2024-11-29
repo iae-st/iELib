@@ -33,6 +33,10 @@ public class BlockDisplay {
         blockDisplayList.add(this);
     }
 
+    public void addText(String text) {
+        displayTexts.add(text);
+    }
+
     /**
      * Shows the display to the player if they are looking at the specified block.
      *
