@@ -246,4 +246,11 @@ public class PersistentDataUtils {
         NamespacedKey key1 = new NamespacedKey(iELib.getPlugin(), key);
         return chunk.getPersistentDataContainer().get(key1, type);
     }
+
+
+    public static void removeKeyFromChunk(Chunk chunk, String key) {
+        NamespacedKey key1 = new NamespacedKey(iELib.getPlugin(), key);
+        chunk.getPersistentDataContainer().remove(key1);
+    }
+
 }
