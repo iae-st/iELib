@@ -1,6 +1,7 @@
 package ez.iELib.customblocks;
 
 import ez.iELib.iELib;
+import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -16,6 +17,7 @@ import java.util.*;
 /**
  * Class representing a display of text above a block using ArmorStands.
  */
+@Getter
 public class BlockDisplay {
     public static List<BlockDisplay> blockDisplayList = new ArrayList<>();
     private List<ArmorStand> displayArmorStands = new ArrayList<>();
