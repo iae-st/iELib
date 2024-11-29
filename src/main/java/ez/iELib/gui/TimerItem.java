@@ -1,10 +1,7 @@
 package ez.iELib.gui;
 
-import ez.iELib.ItemBuilder;
+import ez.iELib.items.ItemBuilder;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemFactory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitTask;

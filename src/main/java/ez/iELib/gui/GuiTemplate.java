@@ -5,8 +5,8 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import com.github.stefvanschie.inventoryframework.pane.StaticPane;
-import ez.iELib.ItemBuilder;
 import ez.iELib.iELib;
+import ez.iELib.items.ItemBuilder;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -16,6 +16,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
+
 
 public abstract class GuiTemplate implements Listener {
     private final int rows;
@@ -121,6 +122,7 @@ public abstract class GuiTemplate implements Listener {
             });
         }
     }
+
 
 
     public void registerEvents() {

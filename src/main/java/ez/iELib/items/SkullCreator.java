@@ -1,4 +1,4 @@
-package ez.iELib;
+package ez.iELib.items;
 
 import com.destroystokyo.paper.profile.PlayerProfile;
 import com.destroystokyo.paper.profile.ProfileProperty;

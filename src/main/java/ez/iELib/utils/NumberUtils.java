@@ -86,4 +86,14 @@ public class NumberUtils {
         return number + suffix;
     }
 
+    public static boolean shouldDrop(double percentage) {
+        if (percentage < 0 || percentage > 100) {
+            throw new IllegalArgumentException("Percentage must be between 0 and 100");
+        }
+
+        int randomValue = (int) (Math.random() * 101);
+
+        return randomValue < percentage;
+    }
+
 }

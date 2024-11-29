@@ -1,4 +1,5 @@
 package ez.iELib.ticking;
 
-public abstract class TickingAction implements ITick {
+public interface TickingAction {
+    void tick();
 }

@@ -12,7 +12,6 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class PersistentDataUtils {
 
-
     private static final PersistentDataType<?, ?>[] PRIMITIVE_DATA_TYPES = new PersistentDataType<?, ?>[]{
             PersistentDataType.BYTE,
             PersistentDataType.SHORT,
@@ -26,7 +25,6 @@ public class PersistentDataUtils {
             PersistentDataType.LONG_ARRAY,
             PersistentDataType.TAG_CONTAINER_ARRAY,
             PersistentDataType.TAG_CONTAINER};
-
 
     /**
      * Retrieves the data type of key in the given PersistentDataContainer.
@@ -43,13 +41,13 @@ public class PersistentDataUtils {
     }
 
     /**
-     * It adds a key to an itemstack
+     * Adds a key-value pair to an ItemStack's PersistentDataContainer.
      *
-     * @param itemStack The itemstack you want to add the key to.
-     * @param key       The key of the data you want to add.
+     * @param itemStack The ItemStack to add the key-value pair to.
+     * @param key       The key for the data you want to add.
      * @param type      The type of data you want to store.
      * @param value     The value you want to set the key to.
-     * @return The itemStack with the key added to it.
+     * @return The ItemStack with the key added to it.
      */
     public static ItemStack addKey(ItemStack itemStack, String key, PersistentDataType type, Object value) {
         ItemMeta meta = itemStack.getItemMeta();
@@ -72,7 +70,20 @@ public class PersistentDataUtils {
     }
 
     /**
-     * Removes a specific key from the given item stack's persistent data container.
+     * Adds a key-value pair to a Block's PersistentDataContainer.
+     *
+     * @param block The Block to add the key-value pair to.
+     * @param key   The key for the data you want to add.
+     * @param type  The type of data you want to store.
+     * @param value The value you want to set the key to.
+     */
+    public static void addKeyToBlock(Block block, String key, PersistentDataType type, Object value) {
+        CustomBlockData customBlockData = new CustomBlockData(block, iELib.getPlugin());
+        customBlockData.set(new NamespacedKey(iELib.getPlugin(), key), type, value);
+    }
+
+    /**
+     * Removes a specific key from the given ItemStack's PersistentDataContainer.
      *
      * @param itemStack The ItemStack to remove the key from.
      * @param key       The key to be removed.
@@ -87,9 +98,9 @@ public class PersistentDataUtils {
     }
 
     /**
-     * Removes a specific key from the given block's persistent data container.
+     * Removes a specific key from the given Block's PersistentDataContainer.
      *
-     * @param block The block to remove the key from.
+     * @param block The Block to remove the key from.
      * @param key   The key to be removed.
      */
     public static void removeKeyFromBlock(Block block, String key) {
@@ -98,12 +109,12 @@ public class PersistentDataUtils {
     }
 
     /**
-     * It gets the key from the itemstack
+     * Retrieves the value associated with the given key from the given ItemStack's PersistentDataContainer.
      *
-     * @param itemStack The itemStack you want to get the key from.
-     * @param key       The key of the data you want to get.
-     * @param type      The type of data you want to get.
-     * @return The value of the key.
+     * @param itemStack The ItemStack to retrieve the value from.
+     * @param key       The key to retrieve the value for.
+     * @param type      The type of the value to retrieve.
+     * @return The value associated with the key, or null if the key does not exist or the value cannot be cast to the specified type.
      */
     public static Object getKey(ItemStack itemStack, String key, PersistentDataType type) {
         NamespacedKey key1 = new NamespacedKey(iELib.getPlugin(), key);
@@ -125,12 +136,25 @@ public class PersistentDataUtils {
     }
 
     /**
-     * This function checks if the item has a key with the given key and type.
+     * Retrieves the value associated with the given key from the given Block's PersistentDataContainer.
      *
-     * @param itemStack The itemstack you want to check
+     * @param block The Block to retrieve the value from.
+     * @param key   The key to retrieve the value for.
+     * @param type  The type of the value to retrieve.
+     * @return The value associated with the key, or null if the key does not exist or the value cannot be cast to the specified type.
+     */
+    public static Object getKeyFromBlock(Block block, String key, PersistentDataType type) {
+        CustomBlockData customBlockData = new CustomBlockData(block, iELib.getPlugin());
+        return getKeyFromBlock(customBlockData, key, type);
+    }
+
+    /**
+     * Checks if the given ItemStack has a key with the given key and type.
+     *
+     * @param itemStack The ItemStack to check.
      * @param key       The key of the tag you want to check for.
-     * @param type      The type of data you want to get.
-     * @return A boolean value.
+     * @param type      The type of data you want to check for.
+     * @return True if the ItemStack has the key, false otherwise.
      */
     public static boolean hasKey(ItemStack itemStack, String key, PersistentDataType type) {
         NamespacedKey namespacedKey = new NamespacedKey(iELib.getPlugin(), key);
@@ -149,6 +173,18 @@ public class PersistentDataUtils {
     }
 
     /**
+     * Checks if the given Block's PersistentDataContainer has a key with the given key.
+     *
+     * @param block The Block to check.
+     * @param key   The key of the tag you want to check for.
+     * @return True if the Block's PersistentDataContainer has the key, false otherwise.
+     */
+    public static boolean blockHasKey(Block block, String key) {
+        CustomBlockData customBlockData = new CustomBlockData(block, iELib.getPlugin());
+        return customBlockData.has(new NamespacedKey(iELib.getPlugin(), key));
+    }
+
+    /**
      * Checks if the given ItemStack has an ID key.
      *
      * @param itemStack The ItemStack to check.
@@ -160,12 +196,11 @@ public class PersistentDataUtils {
     }
 
     /**
-     * If the item stack is not null, and the item stack's meta is not null, and the item stack's meta's persistent data
-     * container has the key, then return true
+     * Checks if the given ItemStack has a key with the given key.
      *
-     * @param itemStack The itemstack you want to check
-     * @param key       The key to check for
-     * @return A boolean value.
+     * @param itemStack The ItemStack to check.
+     * @param key       The key to check for.
+     * @return True if the ItemStack has the key, false otherwise.
      */
     public static boolean hasKey(ItemStack itemStack, String key) {
         if (itemStack == null) return false;
@@ -174,16 +209,39 @@ public class PersistentDataUtils {
         return itemStack.getItemMeta().getPersistentDataContainer().has(namespacedKey);
     }
 
+    /**
+     * Adds a key-value pair to a Chunk's PersistentDataContainer.
+     *
+     * @param chunk The Chunk to add the key-value pair to.
+     * @param key   The key for the data you want to add.
+     * @param type  The type of data you want to store.
+     * @param value The value you want to set the key to.
+     */
     public static void addKeyToChunk(Chunk chunk, String key, PersistentDataType type, Object value) {
         NamespacedKey key1 = new NamespacedKey(iELib.getPlugin(), key);
         chunk.getPersistentDataContainer().set(key1, type, value);
     }
 
+    /**
+     * Checks if the given Chunk's PersistentDataContainer has a key with the given key.
+     *
+     * @param chunk The Chunk to check.
+     * @param key   The key to check for.
+     * @return True if the Chunk's PersistentDataContainer has the key, false otherwise.
+     */
     public static boolean HasKeyInChunk(Chunk chunk, String key) {
         NamespacedKey key1 = new NamespacedKey(iELib.getPlugin(), key);
         return chunk.getPersistentDataContainer().has(key1);
     }
 
+    /**
+     * Retrieves the value associated with the given key from the given Chunk's PersistentDataContainer.
+     *
+     * @param chunk The Chunk to retrieve the value from.
+     * @param key   The key to retrieve the value for.
+     * @param type  The type of the value to retrieve.
+     * @return The value associated with the key, or null if the key does not exist or the value cannot be cast to the specified type.
+     */
     public static Object GetKeyInChunk(Chunk chunk, String key, PersistentDataType type) {
         NamespacedKey key1 = new NamespacedKey(iELib.getPlugin(), key);
         return chunk.getPersistentDataContainer().get(key1, type);
