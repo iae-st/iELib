@@ -20,6 +20,7 @@ public class BlockDisplay {
     public static List<BlockDisplay> blockDisplayList = new ArrayList<>();
     private List<ArmorStand> displayArmorStands = new ArrayList<>();
     private BukkitTask distanceCheckTask;
+    private BukkitTask textUpdateTask;
     private Set<Player> playersLookingAtBlock = new HashSet<>();
     private List<String> displayTexts;
 
@@ -172,6 +173,7 @@ public class BlockDisplay {
         displayArmorStands.forEach(ArmorStand::remove);
         displayArmorStands.clear();
         this.cancelDistanceCheck();
+        this.cancelTextUpdateTask();
         blockDisplayList.remove(this);
     }
 
@@ -184,6 +186,52 @@ public class BlockDisplay {
             BlockDisplay blockDisplay = iterator.next();
             blockDisplay.kill();
             iterator.remove();
+        }
+    }
+
+    /**
+     * Starts a task to update the text every second.
+     */
+    public void startTextUpdateTask() {
+        textUpdateTask = new BukkitRunnable() {
+            @Override
+            public void run() {
+                updateText();
+            }
+        }.runTaskTimer(iELib.getPlugin(), 0, 20); // Update every second
+    }
+
+    /**
+     * Updates the text displayed by the ArmorStands.
+     */
+    public void updateText() {
+        for (ArmorStand armorStand : displayArmorStands) {
+            if (armorStand.isValid()) {
+                // Update the text here. For example, you can cycle through the displayTexts list.
+                String newText = getNextText();
+                armorStand.setCustomName(newText);
+            }
+        }
+    }
+
+    /**
+     * Gets the next text to display. This is just an example implementation.
+     *
+     * @return The next text to display.
+     */
+    private String getNextText() {
+        // Example implementation: cycle through the displayTexts list
+        String currentText = displayTexts.remove(0);
+        displayTexts.add(currentText);
+        return currentText;
+    }
+
+    /**
+     * Cancels the text update task.
+     */
+    public void cancelTextUpdateTask() {
+        if (textUpdateTask != null) {
+            textUpdateTask.cancel();
         }
     }
 }
