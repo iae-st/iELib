@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class ItemBuilder {
     public static ItemStack customItemName(Material mat, String name, String... lore) {
@@ -27,6 +28,16 @@ public class ItemBuilder {
         item.setItemMeta(meta);
         return item;
     }
+
+    public static ItemStack customItemUsingStack(ItemStack mat, String name, List<String> lore) {
+        ItemStack item = new ItemStack(mat);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        return item;
+    }
+
 
     public static ItemStack customUnbreakableItem(ItemStack mat, String name, String... lore) {
         ItemStack item = new ItemStack(mat);
