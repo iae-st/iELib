@@ -124,6 +124,17 @@ public class SkullCreator {
         state.update(false, false);
     }
 
+    public static Block returnBlockWithBase64(Block block, String base64) {
+        notNull(block, "block");
+        notNull(base64, "base64");
+
+        setToSkull(block);
+        Skull state = (Skull) block.getState();
+        mutateBlockState(state, base64);
+        state.update(false, false);
+        return block;
+    }
+
     /**
      * Modifies a skull to use the skin at the given Mojang URL.
      *
