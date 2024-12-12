@@ -10,6 +10,7 @@ import org.bukkit.block.Skull;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Base64;
@@ -18,6 +19,7 @@ import java.util.UUID;
 public class SkullCreator {
 
     private static boolean warningPosted = false;
+    private static Field blockProfileField;
 
 
     /**
@@ -112,6 +114,16 @@ public class SkullCreator {
         return item;
     }
 
+    public static void blockWithBase64(Block block, String base64) {
+        notNull(block, "block");
+        notNull(base64, "base64");
+
+        setToSkull(block);
+        Skull state = (Skull) block.getState();
+        mutateBlockState(state, base64);
+        state.update(false, false);
+    }
+
     /**
      * Modifies a skull to use the skin at the given Mojang URL.
      *
@@ -195,6 +207,17 @@ public class SkullCreator {
         return Bukkit.createProfile(id);
     }
 
+    private static void mutateBlockState(Skull block, String b64) {
+        try {
+            if (blockProfileField == null) {
+                blockProfileField = block.getClass().getDeclaredField("profile");
+                blockProfileField.setAccessible(true);
+            }
+            blockProfileField.set(block, makeProfile(b64));
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
 
     // suppress warning since PLAYER_HEAD doesn't exist in 1.12.2,
     // but we expect this and catch the error at runtime.
