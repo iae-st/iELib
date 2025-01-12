@@ -156,10 +156,13 @@ public class ProtectionManager {
     }
 
 
-    public boolean hasWorldGuardPermissions(Location location, Player player, StateFlag flags) {
-        if(worldGuard == null) return true;
+    private boolean hasWorldGuardPermissions(Location location, Player player, StateFlag flags) {
+        if (worldGuard == null) return true;
         RegionQuery query = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery();
         com.sk89q.worldedit.util.Location loc = BukkitAdapter.adapt(location);
+        if (query.getApplicableRegions(loc).size() == 0) {
+            return true; // No regions at this location, so allow by default
+        }
         return query.testState(loc, WorldGuardPlugin.inst().wrapPlayer(player), flags);
     }
 }
