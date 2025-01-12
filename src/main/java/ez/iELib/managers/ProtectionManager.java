@@ -61,7 +61,7 @@ public class ProtectionManager {
 
     public boolean playerCanInteract(Block block, Player player) {
         boolean canInteract = true;
-
+        if(player.isOp()) return true;
         if (griefPrevention != null) {
             if (isPlayerNotInClaim(block.getLocation())) {
                 canInteract = true;
@@ -109,7 +109,7 @@ public class ProtectionManager {
 
     public boolean playerCanPlace(Block block, Player player) {
         boolean canPlace = true;
-
+        if(player.isOp()) return true;
         if (griefPrevention != null) {
             if (isPlayerNotInClaim(block.getLocation())) {
                 canPlace = true;
