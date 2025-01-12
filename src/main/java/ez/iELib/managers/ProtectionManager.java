@@ -85,7 +85,7 @@ public class ProtectionManager {
 
     public boolean playerCanBreak(Block block, Player player) {
         boolean canBreak = true;
-
+        if(player.isOp()) return true;
         if (griefPrevention != null) {
             if (isPlayerNotInClaim(block.getLocation())) {
                 canBreak = true;

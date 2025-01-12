@@ -48,14 +48,6 @@
       <url>https://repo.metamechanists.org/releases</url>
     </repository>
     <repository>
-      <id>placeholderapi</id>
-      <url>https://repo.extendedclip.com/releases/</url>
-    </repository>
-    <repository>
-      <id>lylat</id>
-      <url>https://nexus.lylat.world/repository/maven-public/</url>
-    </repository>
-    <repository>
       <id>spigot-repo</id>
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
@@ -92,8 +84,8 @@
       <url>https://oss.sonatype.org/content/groups/public/</url>
     </repository>
     <repository>
-      <id>neetgames</id>
-      <url>https://nexus.neetgames.com/repository/maven-releases/</url>
+      <id>xenondevs</id>
+      <url>https://repo.xenondevs.xyz/releases</url>
     </repository>
   </repositories>
   <dependencies>
@@ -143,24 +135,6 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.30</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.github.MilkBowl</groupId>
-      <artifactId>VaultAPI</artifactId>
-      <version>1.7</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>me.clip</groupId>
-      <artifactId>placeholderapi</artifactId>
-      <version>2.11.6</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.gmail.nossr50.mcMMO</groupId>
-      <artifactId>mcMMO</artifactId>
-      <version>2.2.004</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
