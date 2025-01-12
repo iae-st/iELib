@@ -224,12 +224,13 @@ public class SkullCreator {
                 blockProfileField = block.getClass().getDeclaredField("profile");
                 blockProfileField.setAccessible(true);
             }
-            blockProfileField.set(block, makeProfile(b64));
+            PlayerProfile playerProfile = makeProfile(b64);
+            playerProfile.setProperty(new ProfileProperty("textures", b64));
+            blockProfileField.set(block, playerProfile);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
-
     // suppress warning since PLAYER_HEAD doesn't exist in 1.12.2,
     // but we expect this and catch the error at runtime.
     @SuppressWarnings("JavaReflectionMemberAccess")

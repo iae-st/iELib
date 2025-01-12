@@ -19,6 +19,7 @@ import org.bukkit.plugin.PluginManager;
 
 
 public abstract class GuiTemplate implements Listener {
+    public static ItemStack FILLER_GLASS = ItemBuilder.customItemName(Material.BLACK_STAINED_GLASS_PANE, " ");
     private final int rows;
     @Getter
     public ChestGui gui;
