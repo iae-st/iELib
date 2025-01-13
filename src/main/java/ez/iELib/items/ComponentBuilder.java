@@ -7,14 +7,14 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 public class ComponentBuilder {
     public static Component createComponent(String text) {
         String miniMessageString = MiniMessage.miniMessage().serialize(
-                LegacyComponentSerializer.legacySection().deserialize(text));
+                LegacyComponentSerializer.legacyAmpersand().deserialize(text));
         return MiniMessage.miniMessage().deserialize("<!i>" + miniMessageString);
     }
 
 
     public static Component createComponent(String text, String... replacements) {
         String miniMessageString = MiniMessage.miniMessage().serialize(
-                LegacyComponentSerializer.legacySection().deserialize(text));
+                LegacyComponentSerializer.legacyAmpersand().deserialize(text));
         for (String replacement : replacements) {
             miniMessageString = miniMessageString.replaceFirst("%s", replacement);
         }
