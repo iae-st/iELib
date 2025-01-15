@@ -9,10 +9,13 @@ public class RGBColor {
     private final String hex;
     @Getter
     private final ChatColor color;
+    @Getter
+    private final String componentColor;
 
     public RGBColor(String hex) {
         this.hex = hex;
         this.color = ChatColor.of(hex);
+        this.componentColor = "<" + hex + ">";
     }
 
 
