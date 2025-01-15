@@ -2,6 +2,7 @@ package ez.iELib.items;
 
 import ez.iELib.utils.colorUtils.ColorUtils;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
@@ -54,7 +55,10 @@ public class ComponentBuilder {
                                 .build()
                 )
                 .build();
-        return mm.deserialize(buffer.toString());
+        return mm.deserialize(buffer.toString()).decoration(TextDecoration.ITALIC, false);
     }
+
+
+
 
 }
