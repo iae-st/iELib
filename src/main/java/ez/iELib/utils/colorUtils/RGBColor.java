@@ -15,7 +15,7 @@ public class RGBColor {
     public RGBColor(String hex) {
         this.hex = hex;
         this.color = ChatColor.of(hex);
-        this.componentColor = "<" + hex + ">";
+        this.componentColor = "<color:" + hex + ">";
     }
 
 
