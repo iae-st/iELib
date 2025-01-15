@@ -9,6 +9,7 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 public class ComponentBuilder {
     public static Component createComponent(String text) {
+        String replaced = text.replaceAll("§", "&");
         MiniMessage mm = MiniMessage.builder()
                 .tags(
                         TagResolver.builder()
@@ -16,7 +17,7 @@ public class ComponentBuilder {
                                 .build()
                 )
                 .build();
-        return mm.deserialize(text);
+        return mm.deserialize(replaced);
     }
 
 }
