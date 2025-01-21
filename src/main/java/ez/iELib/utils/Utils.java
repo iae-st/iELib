@@ -43,7 +43,7 @@ public class Utils {
 
     public static void spawnFireworks(Location location, int offsetX, int offsetY, int offsetZ, Color color, int amount) {
         Location loc = location.add(offsetX, offsetY, offsetZ);
-        Firework fw = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK);
+        Firework fw = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK_ROCKET);
         FireworkMeta fwm = fw.getFireworkMeta();
 
         fwm.setPower(2);
@@ -53,7 +53,7 @@ public class Utils {
         fw.detonate();
 
         for (int i = 0; i < amount; i++) {
-            Firework fw2 = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK);
+            Firework fw2 = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK_ROCKET);
             fw2.setFireworkMeta(fwm);
         }
     }
@@ -256,7 +256,7 @@ public class Utils {
 
     public static ItemStack enchantItem(ItemStack itemStack) {
         ItemMeta meta = itemStack.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, false);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, false);
         itemStack.setItemMeta(meta);
         return itemStack;
     }

@@ -62,7 +62,7 @@ public class ItemBuilder {
         ItemStack item = new ItemStack(mat);
         ItemMeta meta = item.getItemMeta();
         meta.displayName(ComponentBuilder.createComponent(name));
-        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        meta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
         meta.lore(Arrays.stream(lore)
                 .map(ComponentBuilder::createComponent)
                 .collect(Collectors.toList()));
@@ -79,7 +79,7 @@ public class ItemBuilder {
                 .collect(Collectors.toList()));
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(meta);
-        item.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
+        item.addUnsafeEnchantment(Enchantment.UNBREAKING, 1);
         return item;
     }
 
@@ -87,7 +87,7 @@ public class ItemBuilder {
         ItemMeta meta = itemStack.getItemMeta();
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         itemStack.setItemMeta(meta);
-        itemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
+        itemStack.addUnsafeEnchantment(Enchantment.UNBREAKING, 1);
         return itemStack;
     }
 

@@ -4,7 +4,6 @@ import com.destroystokyo.paper.profile.PlayerProfile;
 import com.destroystokyo.paper.profile.ProfileProperty;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.SkullType;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
 import org.bukkit.inventory.ItemStack;
@@ -114,27 +113,6 @@ public class SkullCreator {
         return item;
     }
 
-    public static void blockWithBase64(Block block, String base64) {
-        notNull(block, "block");
-        notNull(base64, "base64");
-
-        setToSkull(block);
-        Skull state = (Skull) block.getState();
-        mutateBlockState(state, base64);
-        state.update(false, false);
-    }
-
-    public static Block returnBlockWithBase64(Block block, String base64) {
-        notNull(block, "block");
-        notNull(base64, "base64");
-
-        setToSkull(block);
-        Skull state = (Skull) block.getState();
-        mutateBlockState(state, base64);
-        state.update(false, false);
-        return block;
-    }
-
     /**
      * Modifies a skull to use the skin at the given Mojang URL.
      *
@@ -177,18 +155,6 @@ public class SkullCreator {
         return item;
     }
 
-    private static void setToSkull(Block block) {
-        checkLegacy();
-
-        try {
-            block.setType(Material.valueOf("PLAYER_HEAD"), false);
-        } catch (IllegalArgumentException e) {
-            block.setType(Material.valueOf("SKULL"), false);
-            Skull state = (Skull) block.getState();
-            state.setSkullType(SkullType.PLAYER);
-            state.update(false, false);
-        }
-    }
 
     private static void notNull(Object o, String name) {
         if (o == null) {
