@@ -112,16 +112,19 @@
             <groupId>net.kyori</groupId>
             <artifactId>adventure-api</artifactId>
             <version>4.18.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>solar.squares</groupId>
             <artifactId>pixel-width-core</artifactId>
             <version>1.1.0</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>solar.squares</groupId>
             <artifactId>pixel-width-utils</artifactId>
             <version>1.1.0</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>co.aikar</groupId>
