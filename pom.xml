@@ -114,16 +114,6 @@
             <version>4.18.0</version>
         </dependency>
         <dependency>
-            <groupId>solar.squares</groupId>
-            <artifactId>pixel-width-core</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>solar.squares</groupId>
-            <artifactId>pixel-width-utils</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-        <dependency>
             <groupId>co.aikar</groupId>
             <artifactId>acf-bukkit</artifactId>
             <version>0.5.1-SNAPSHOT</version>

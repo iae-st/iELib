@@ -8,7 +8,6 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
-import solar.squares.pixelwidth.utils.CenterAPI;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -60,9 +59,6 @@ public class ComponentBuilder {
         return mm.deserialize(buffer.toString()).decoration(TextDecoration.ITALIC, false);
     }
 
-    public static Component centerComponent(Component component) {
-        return CenterAPI.center(component, Component.text(".", Style.style(TextDecoration.OBFUSCATED)));
-    }
 
 
 
