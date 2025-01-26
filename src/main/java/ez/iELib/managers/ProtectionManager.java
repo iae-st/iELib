@@ -86,6 +86,7 @@ public class ProtectionManager {
     public boolean playerCanBreak(Block block, Player player) {
         boolean canBreak = true;
         if(player.isOp()) return true;
+        if(block == null) return false;
         if (griefPrevention != null) {
             if (isPlayerNotInClaim(block.getLocation())) {
                 canBreak = true;
@@ -110,6 +111,7 @@ public class ProtectionManager {
     public boolean playerCanPlace(Block block, Player player) {
         boolean canPlace = true;
         if(player.isOp()) return true;
+        if(block == null) return false;
         if (griefPrevention != null) {
             if (isPlayerNotInClaim(block.getLocation())) {
                 canPlace = true;
