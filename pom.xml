@@ -36,10 +36,10 @@
                                     <pattern>ez.iELib</pattern>
                                     <shadedPattern>ez.iELib</shadedPattern>
                                 </relocation>
-                                <relocation>
-                                    <pattern>dev.triumphteam.gui</pattern>
-                                    <shadedPattern>ez.iELib.gui</shadedPattern>
-                                </relocation>
+<!--                                <relocation>-->
+<!--                                    <pattern>dev.triumphteam.gui</pattern>-->
+<!--                                    <shadedPattern>ez.iELib.gui</shadedPattern>-->
+<!--                                </relocation>-->
                             </relocations>
                             <filters>
                                 <filter>
@@ -112,12 +112,12 @@
             <version>1.21.3-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>dev.triumphteam</groupId>
-            <artifactId>triumph-gui</artifactId>
-            <version>3.1.11</version>
-            <scope>compile</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>dev.triumphteam</groupId>-->
+<!--            <artifactId>triumph-gui</artifactId>-->
+<!--            <version>3.1.11</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>net.kyori</groupId>
             <artifactId>adventure-api</artifactId>
@@ -159,6 +159,12 @@
             <artifactId>worldguard-bukkit</artifactId>
             <version>7.0.12</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.stefvanschie.inventoryframework</groupId>
+            <artifactId>IF</artifactId>
+            <version>0.10.14-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.github.TechFortress</groupId>
