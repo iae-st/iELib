@@ -34,6 +34,17 @@ public class ItemBuilder {
         return item;
     }
 
+    public static ItemStack customItemUsingStack(ItemStack mat, Component name, String... lore) {
+        ItemStack item = new ItemStack(mat);
+        ItemMeta meta = item.getItemMeta();
+        meta.displayName(name);
+        meta.lore(Arrays.stream(lore)
+                .map(ComponentBuilder::createComponent)
+                .collect(Collectors.toList()));
+        item.setItemMeta(meta);
+        return item;
+    }
+
     public static ItemStack customItemUsingStack(ItemStack mat, String name, List<String> lore) {
         ItemStack item = new ItemStack(mat);
         ItemMeta meta = item.getItemMeta();
@@ -73,13 +84,13 @@ public class ItemBuilder {
     public static ItemStack customEnchantedItemUsingStack(ItemStack itemStack, String s, String... lore) {
         ItemStack item = new ItemStack(itemStack);
         ItemMeta meta = item.getItemMeta();
+        item.addUnsafeEnchantment(Enchantment.UNBREAKING, 1);
         meta.displayName(ComponentBuilder.createComponent(s));
         meta.lore(Arrays.stream(lore)
                 .map(ComponentBuilder::createComponent)
                 .collect(Collectors.toList()));
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(meta);
-        item.addUnsafeEnchantment(Enchantment.UNBREAKING, 1);
         return item;
     }
 
