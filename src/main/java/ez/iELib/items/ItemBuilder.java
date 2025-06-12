@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,16 +46,16 @@ public class ItemBuilder {
         return item;
     }
 
-    public static ItemStack customItemUsingStack(ItemStack mat, String name, List<String> lore) {
+
+    public static ItemStack customItemUsingStack(ItemStack mat, String name, List<Component> lore) {
         ItemStack item = new ItemStack(mat);
         ItemMeta meta = item.getItemMeta();
         meta.displayName(ComponentBuilder.createComponent(name));
-        meta.lore(lore.stream()
-                .map(ComponentBuilder::createComponent)
-                .collect(Collectors.toList()));
+        meta.lore(new ArrayList<>(lore));
         item.setItemMeta(meta);
         return item;
     }
+
 
     public static ItemStack customUnbreakableItem(ItemStack mat, String name, String... lore) {
         ItemStack item = new ItemStack(mat);
