@@ -7,11 +7,13 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.Pane;
 import com.github.stefvanschie.inventoryframework.pane.StaticPane;
 import ez.iELib.iELib;
+import ez.iELib.items.ComponentBuilder;
 import ez.iELib.items.ItemBuilder;
 import ez.iELib.items.SkullCreator;
 import ez.iELib.utils.FormatUtils;
 import lombok.Getter;
 import lombok.Setter;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -166,14 +168,14 @@ public abstract class GuiTemplate implements Listener {
         double getValue();
     }
 
-    protected List<String> getStepSizeDisplay(double[][] stepOptions, int currentStepIndex) {
-        List<String> display = new ArrayList<>();
-        display.add("&aAmount:");
+    protected List<Component> getStepSizeDisplay(double[][] stepOptions, int currentStepIndex) {
+        List<Component> display = new ArrayList<>();
+        display.add(ComponentBuilder.createComponent("&aAmount:"));
         for (int i = 0; i < stepOptions[0].length; i++) {
             if (i == currentStepIndex) {
-                display.add("&b⏩&7" + FormatUtils.formatNumber(stepOptions[0][i]) + "&b⏪");
+                display.add(ComponentBuilder.createComponent("&b⏩&7" + FormatUtils.formatNumber(stepOptions[0][i]) + "&b⏪"));
             } else {
-                display.add("&7" + FormatUtils.formatNumber(stepOptions[0][i]));
+                display.add(ComponentBuilder.createComponent("&7" + FormatUtils.formatNumber(stepOptions[0][i])));
             }
         }
         return display;
