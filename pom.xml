@@ -161,12 +161,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.stefvanschie.inventoryframework</groupId>
-            <artifactId>IF</artifactId>
-            <version>0.10.14-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>com.github.TechFortress</groupId>
             <artifactId>GriefPrevention</artifactId>
             <version>16.18.1</version>
