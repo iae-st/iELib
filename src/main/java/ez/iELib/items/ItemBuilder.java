@@ -56,6 +56,15 @@ public class ItemBuilder {
         return item;
     }
 
+    public static ItemStack customItemUsingStack(ItemStack mat, Component name, List<Component> lore) {
+        ItemStack item = new ItemStack(mat);
+        ItemMeta meta = item.getItemMeta();
+        meta.displayName(name);
+        meta.lore(new ArrayList<>(lore));
+        item.setItemMeta(meta);
+        return item;
+    }
+
 
     public static ItemStack customUnbreakableItem(ItemStack mat, String name, String... lore) {
         ItemStack item = new ItemStack(mat);

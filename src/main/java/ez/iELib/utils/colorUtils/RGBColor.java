@@ -18,5 +18,11 @@ public class RGBColor {
         this.componentColor = "<color:" + hex + ">";
     }
 
+    public RGBColor(String hex, boolean isGradient) {
+        this.hex = hex;
+        this.color = ChatColor.of(hex);
+        this.componentColor = hex;
+    }
+
 
 }
