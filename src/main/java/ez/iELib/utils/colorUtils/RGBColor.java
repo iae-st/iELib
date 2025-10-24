@@ -20,7 +20,7 @@ public class RGBColor {
 
     public RGBColor(String hex, boolean isGradient) {
         this.hex = hex;
-        this.color = ChatColor.of(hex);
+        this.color = ChatColor.GRAY;
         this.componentColor = hex;
     }
 
