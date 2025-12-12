@@ -4,8 +4,10 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import ez.iELib.Logger;
 import ez.iELib.iELib;
+import ez.iELib.utils.colorUtils.ColorUtils;
 import lombok.Getter;
 import lombok.extern.java.Log;
+import org.bukkit.Bukkit;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -41,6 +43,28 @@ public abstract class BaseConnectionManager {
                 logger.log("Connected to MySQL database using OrmLite!", true);
             } catch (SQLException e) {
                 logger.error("MySQL connection failed! Falling back to SQLite.", true);
+                useSQLite();
+            }
+        }
+    }
+
+    public BaseConnectionManager() {
+        sqlHost = getConfigValue("MySQL.host");
+        sqlPort = getConfigValue("MySQL.port");
+        sqlDatabase = getConfigValue("MySQL.database_name");
+        sqlUsername = getConfigValue("MySQL.username");
+        sqlPassword = getConfigValue("MySQL.password");
+
+        if (sqlHost.isEmpty() || sqlHost.equals("null")) {
+            useSQLite();
+        } else {
+            String mysqlUrl = "jdbc:mysql://" + sqlHost + ":" + sqlPort + "/" + sqlDatabase + "?useSSL=false";
+            try {
+                connectionSource = new JdbcConnectionSource(mysqlUrl, sqlUsername, sqlPassword);
+                connectionType = ConnectionType.MYSQL;
+                Bukkit.getConsoleSender().sendMessage(ColorUtils.color("Connected to MySQL database using OrmLite!"));
+            } catch (SQLException e) {
+                Bukkit.getConsoleSender().sendMessage(ColorUtils.color("MySQL connection failed! Falling back to SQLite."));
                 useSQLite();
             }
         }
